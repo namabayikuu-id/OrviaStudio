@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toko Batik Nusantara — Portfolio Orvia Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #FAFAF7; --surface: #F3F2EC; --card: #FFFFFF;
+      --ink: #1A1A18; --ink-mid: #3D3D39; --ink-muted: #8A8A80;
+      --gold: #C8963E; --gold-lt: #E8C07A; --gold-bg: #FBF5E8;
+      --olive: #4A5240; --accent: #2B5F3E;
+      --border: rgba(26,26,24,0.08); --shadow: 0 4px 40px rgba(26,26,24,0.08);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      padding: 0 5%; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(250,250,247,0.92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.4rem; color: var(--ink); letter-spacing: -1px; }
+    .nav-logo span { color: var(--gold); }
+    .nav-back { display: inline-flex; align-items: center; gap: 8px; font-size: .88rem; color: var(--ink-muted); font-weight: 500; transition: color .2s; }
+    .nav-back:hover { color: var(--ink); }
+
+    /* HERO */
+    .project-hero {
+      min-height: 60vh; display: flex; align-items: center;
+      padding: 120px 5% 80px;
+      background: linear-gradient(135deg, #1A1A18 0%, #2B5F3E 100%);
+      position: relative; overflow: hidden;
+    }
+    .project-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(200,150,62,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,150,62,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .project-hero-inner { max-width: 860px; margin: 0 auto; width: 100%; position: relative; }
+    .project-type-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold-lt); background: rgba(200,150,62,.12); border: 1px solid rgba(200,150,62,.25);
+      padding: 6px 16px; border-radius: 50px; margin-bottom: 24px;
+    }
+    .project-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 900; color: #fff; letter-spacing: -1.5px; margin-bottom: 20px; }
+    .project-hero h1 em { font-style: italic; color: var(--gold-lt); }
+    .project-hero p { font-size: 1.1rem; color: rgba(255,255,255,.6); max-width: 560px; line-height: 1.8; }
+    .project-hero-meta { display: flex; gap: 32px; margin-top: 40px; flex-wrap: wrap; }
+    .meta-item { }
+    .meta-label { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 4px; }
+    .meta-value { font-size: .95rem; font-weight: 600; color: rgba(255,255,255,.85); }
+
+    /* CONTENT */
+    .project-content { max-width: 860px; margin: 0 auto; padding: 80px 5%; }
+
+    .story-section { margin-bottom: 56px; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .section-tag::before { content: ''; display: inline-block; width: 20px; height: 1.5px; background: var(--gold); }
+    .story-section h2 { font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); color: var(--ink); letter-spacing: -.5px; margin-bottom: 16px; }
+    .story-section p { font-size: 1rem; color: var(--ink-muted); line-height: 1.85; }
+
+    .story-block {
+      display: flex; gap: 16px; padding: 20px 22px;
+      background: var(--surface); border-radius: 10px;
+      border-left: 3px solid var(--border); margin-bottom: 12px;
+    }
+    .story-block.problem { border-left-color: #e55; }
+    .story-block.solution { border-left-color: var(--gold); }
+    .story-block.result { border-left-color: var(--accent); }
+    .story-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; flex-shrink: 0; padding-top: 2px; min-width: 60px; }
+    .story-block.problem .story-label { color: #e55; }
+    .story-block.solution .story-label { color: var(--gold); }
+    .story-block.result .story-label { color: var(--accent); }
+    .story-text { font-size: .95rem; color: var(--ink-mid); line-height: 1.75; }
+
+    .result-highlight {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(43,95,62,.06); border: 1px solid rgba(43,95,62,.15);
+      border-radius: 10px; padding: 18px 22px;
+      font-size: 1rem; color: var(--accent); font-weight: 600;
+      margin-top: 24px;
+    }
+    .result-highlight i { font-size: 1.1rem; }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    /* MOCKUP PREVIEW */
+    .mockup-preview {
+      background: linear-gradient(135deg, #1A1A18 0%, #2B5F3E 100%);
+      border-radius: 16px; padding: 40px; margin: 48px 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mockup-window {
+      background: #fff; border-radius: 10px; width: 100%; max-width: 500px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5); overflow: hidden;
+    }
+    .mockup-bar {
+      background: #f0f0f0; padding: 10px 14px;
+      display: flex; align-items: center; gap: 7px; border-bottom: 1px solid #e0e0e0;
+    }
+    .m-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .m-red { background: #FF5F57; } .m-yel { background: #FEBC2E; } .m-grn { background: #28C840; }
+    .mockup-body { padding: 24px; }
+    .mockup-hero-block {
+      background: linear-gradient(135deg, #1A1A18, #2B5F3E);
+      border-radius: 8px; padding: 28px 24px; margin-bottom: 16px; color: #fff;
+    }
+    .m-tag { font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 8px; }
+    .m-h { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; line-height: 1.2; }
+    .m-sub { font-size: .68rem; opacity: .6; margin-bottom: 14px; line-height: 1.5; }
+    .m-btn { display: inline-block; background: var(--gold); font-size: .62rem; font-weight: 600; padding: 7px 16px; border-radius: 4px; color: #fff; }
+    .m-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .m-card { background: var(--surface); border-radius: 6px; padding: 14px; border: 1px solid var(--border); }
+    .m-line { height: 6px; border-radius: 3px; background: var(--border); margin-bottom: 5px; }
+    .m-line.w80 { width: 80%; } .m-line.w60 { width: 60%; } .m-line.w70 { width: 70%; }
+
+    /* CTA */
+    .project-cta {
+      background: var(--ink); border-radius: 16px; padding: 48px 40px;
+      text-align: center; margin-top: 64px;
+    }
+    .project-cta h3 { font-family: 'Fraunces', serif; font-size: 1.8rem; color: #fff; margin-bottom: 12px; }
+    .project-cta p { color: rgba(255,255,255,.5); margin-bottom: 28px; font-size: .95rem; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: #fff;
+      padding: 15px 32px; border-radius: 4px;
+      font-size: .95rem; font-weight: 600;
+      transition: background .25s, transform .2s;
+    }
+    .btn-gold:hover { background: #B5832F; transform: translateY(-2px); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .project-hero-meta { gap: 20px; }
+      .mockup-preview { padding: 24px; }
+      .project-cta { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Orvia<span>.</span></a>
+  <a href="../index.html#portfolio" class="nav-back"><i class="fas fa-arrow-left"></i> Kembali ke Portfolio</a>
+</nav>
+
+<section class="project-hero">
+  <div class="project-hero-inner">
+    <div class="project-type-badge"><i class="fas fa-globe"></i> Company Profile</div>
+    <h1>Toko Batik Nusantara<br><em>— Semarang</em></h1>
+    <p>Website company profile yang membawa toko batik berusia 15 tahun ke ranah digital — memperluas jangkauan dari lokal ke seluruh Indonesia.</p>
+    <div class="project-hero-meta">
+      <div class="meta-item">
+        <div class="meta-label">Jenis Proyek</div>
+        <div class="meta-value">Company Profile</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Industri</div>
+        <div class="meta-value">Fashion & Kerajinan</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Lokasi</div>
+        <div class="meta-value">Semarang, Jawa Tengah</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Durasi</div>
+        <div class="meta-value">10 Hari Kerja</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="project-content">
+
+  <div class="mockup-preview reveal">
+    <div class="mockup-window">
+      <div class="mockup-bar">
+        <div class="m-dot m-red"></div>
+        <div class="m-dot m-yel"></div>
+        <div class="m-dot m-grn"></div>
+      </div>
+      <div class="mockup-body">
+        <div class="mockup-hero-block">
+          <div class="m-tag">Batik Nusantara — Semarang</div>
+          <div class="m-h">Keindahan Batik Autentik<br>Langsung dari Pengrajin</div>
+          <div class="m-sub">Koleksi batik tulis dan batik cap berkualitas tinggi, dibuat dengan cinta oleh pengrajin berpengalaman.</div>
+          <span class="m-btn">Lihat Koleksi <i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="m-grid">
+          <div class="m-card">
+            <div class="m-line w80"></div>
+            <div class="m-line w60"></div>
+          </div>
+          <div class="m-card">
+            <div class="m-line w70"></div>
+            <div class="m-line w60"></div>
+          </div>
+          <div class="m-card">
+            <div class="m-line w80"></div>
+            <div class="m-line w60"></div>
+          </div>
+          <div class="m-card">
+            <div class="m-line w70"></div>
+            <div class="m-line w60"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-section reveal">
+    <div class="section-tag">Latar Belakang</div>
+    <h2>Bisnis 15 tahun tanpa kehadiran digital</h2>
+    <p>Toko Batik Nusantara telah berdiri selama 15 tahun dan dikenal baik di kalangan pelanggan setia mereka di Semarang. Namun di era digital ini, mereka mulai kehilangan potensi pelanggan yang mencari produk batik secara online. Banyak calon pembeli dari luar kota yang mempertanyakan keberadaan website dan akhirnya beralih ke kompetitor yang sudah hadir di digital.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="story-section reveal">
+    <div class="section-tag">Proses</div>
+    <h2>Dari masalah ke solusi</h2>
+    <div class="story-block problem">
+      <span class="story-label">Masalah</span>
+      <p class="story-text">Toko sudah berjalan 15 tahun, tapi hanya mengandalkan rekomendasi mulut ke mulut. Banyak calon pembeli yang tanya "ada website-nya gak?" dan langsung pergi ke kompetitor yang sudah hadir secara digital.</p>
+    </div>
+    <div class="story-block solution">
+      <span class="story-label">Solusi</span>
+      <p class="story-text">Website company profile dengan galeri produk visual yang menarik, cerita brand yang kuat yang menekankan keahlian pengrajin, testimoni pelanggan setia, dan tombol WhatsApp yang mudah diakses untuk pemesanan langsung tanpa kerumitan.</p>
+    </div>
+    <div class="story-block result">
+      <span class="story-label">Hasil</span>
+      <p class="story-text">Dalam 3 bulan pertama setelah website live, pertanyaan dari pelanggan baru via WhatsApp meningkat signifikan — termasuk pesanan dari luar kota seperti Jakarta, Surabaya, dan Bandung yang sebelumnya tidak pernah ada.</p>
+    </div>
+    <div class="result-highlight">
+      <i class="fas fa-arrow-trend-up"></i>
+      Jangkauan pelanggan meluas hingga luar kota, tanpa menambah biaya pemasaran
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="story-section reveal">
+    <div class="section-tag">Fitur Utama</div>
+    <h2>Apa yang kami bangun</h2>
+    <p>Website dirancang khusus untuk menonjolkan keunikan dan keaslian batik Nusantara, dengan fokus pada konversi — mengubah pengunjung menjadi pembeli.</p>
+  </div>
+
+  <div class="project-cta reveal">
+    <h3>Bisnis Anda berikutnya?</h3>
+    <p>Ceritakan kebutuhan Anda dan kami bantu wujudkan kehadiran digital yang profesional.</p>
+    <a href="https://wa.me/6281234567890?text=Halo%20Orvia%20Studio%2C%20saya%20ingin%20konsultasi%20gratis" target="_blank" class="btn-gold">
+      <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+    </a>
+  </div>
+
+</div>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
